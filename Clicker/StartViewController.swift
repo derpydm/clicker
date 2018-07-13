@@ -8,10 +8,12 @@
 
 import UIKit
 
-class ClickerViewController: UIViewController {
-
+class StartViewController: UIViewController {
+    @IBAction override func unwindToViewController(_ segue: UIStoryboardSegue) {
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
 
