@@ -46,41 +46,60 @@ class GameViewController: UIViewController {
     }
     func timedGame() {
         runTimer()
+        clickLabel.isHidden = false
+        timerLabel.isHidden = false
         clickLabel.text = String(clicks)
     }
     func speedGame() {
         print("starting speed game")
         runTimer()
+        clickLabel.isHidden = false
+        timerLabel.isHidden = false
         clickLabel.text = String(clicks)
     }
-    @objc func updateTimer() {
-        if mode == "Timed" {
-            if time > 0 {
-                time -= 0.01
-                timerLabel.text = String(Float(time))
+    func runTimer() {
+        timer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { (_) in
+            if self.mode == "Timed" {
+                if self.time > 0.01 {
+                    self.time -= 0.01
+                    self.timerLabel.text = String(Float(self.time))
+                } else {
+                    self.timer.invalidate()
+                    self.resetTimer()
+                }
             } else {
-                timer.invalidate()
-                resetTimer()
-            }
-        } else {
-             if clicks <= clicksNeeded {
-                time += 0.01
-                timerLabel.text = String(Float(time))
-            } else {
-                timer.invalidate()
-                resetTimer()
+                if self.clicks <= self.clicksNeeded {
+                    self.time += 0.01
+                    self.timerLabel.text = String(Float(self.time))
+                } else {
+                    self.timer.invalidate()
+                    self.resetTimer()
+                }
             }
         }
-
-    }
-    func runTimer() {
-        timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: (#selector(GameViewController.updateTimer)), userInfo: nil, repeats: true)
     }
     func resetTimer() {
         if mode == "Timed" {
-            performSegue(withIdentifier: "resultSegue", sender: Any.self)
+            timerLabel.text = "Done!"
+            UIView.animate(withDuration: 3, animations: {
+                self.view.backgroundColor = .red
+                let atransformation = CGAffineTransform(scaleX: 2, y: 2)
+                self.timerLabel.transform = atransformation
+                
+            },
+        completion: { (_) in
+                self.performSegue(withIdentifier: "resultSegue", sender: Any.self)
+            })
         } else {
-            performSegue(withIdentifier: "resultSegue", sender: Any.self)
+            clickLabel.text = String(clicksNeeded)
+            timerLabel.text = "Done!"
+            UIView.animate(withDuration: 3, animations: {
+                self.view.backgroundColor = .red
+                let atransformation = CGAffineTransform(scaleX: 2, y: 2)
+                self.timerLabel.transform = atransformation
+            }, completion: { (_) in
+                self.performSegue(withIdentifier: "resultSegue", sender: Any.self)
+            })
         }
     }
 
@@ -91,6 +110,18 @@ class GameViewController: UIViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "resultSegue" {
+            let nav = segue.destination as! UINavigationController
+            let dest = nav.viewControllers.first as! ResultsTableViewController
+            let sentMode = mode
+            if sentMode == "Timed" {
+                let limit = timeTaken
+                let cps = Float(clicks) / Float(limit)
+                dest.result = Result(cps: cps, type: sentMode, limit: Float(limit))
+            } else {
+                let limit = clicksNeeded
+                let cps = Float(clicks) / Float(time)
+                dest.result = Result(cps: cps, type: sentMode, limit: Float(limit))
+            }
             
         }
     }

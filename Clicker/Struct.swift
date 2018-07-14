@@ -7,7 +7,7 @@
 //
 
 import Foundation
-class Result {
+class Result: Encodable, Decodable {
     
     var cps: Float
     var type: String

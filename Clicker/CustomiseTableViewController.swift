@@ -19,14 +19,15 @@ class CustomiseTableViewController: UITableViewController {
     @IBAction func modeChanged(_ sender: Any) {
         if modeSelector.selectedSegmentIndex == 0 {
             mode = "Timed"
-            counterStepper.value = 0
+            counterStepper.value = 1
             counterLabel.text = String(Int(counterStepper.value))
-            modeLabel.text = mode
+            modeLabel.text = "Time"
         } else {
-            counterStepper.value = 0
+            mode = "Speed"
+            counterStepper.value = 1
             counterLabel.text = String(Int(counterStepper.value))
             modeLabel.text = "Clicks"
-            mode = "Speed"
+            
         }
     }
     @IBAction func counterChanged(_ sender: Any) {

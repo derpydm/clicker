@@ -46,6 +46,7 @@
 		CE1F65A720E72D1B00718AAF /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE1F658A20E72D1B00718AAF /* Info.plist */; };
 		CE1F65A820E72D1B00718AAF /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1F658B20E72D1B00718AAF /* AsyncImageView.swift */; };
 		CE1F65AA20E73EAF00718AAF /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1F65A920E73EAF00718AAF /* GameViewController.swift */; };
+		CE65771A20F911610032C6A6 /* ResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE65771920F911610032C6A6 /* ResultTableViewCell.swift */; };
 		CED63F3920F90C7200C41AD0 /* Struct.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED63F3820F90C7200C41AD0 /* Struct.swift */; };
 /* End PBXBuildFile section */
 
@@ -113,6 +114,7 @@
 		CE1F658A20E72D1B00718AAF /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE1F658B20E72D1B00718AAF /* AsyncImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncImageView.swift; sourceTree = "<group>"; };
 		CE1F65A920E73EAF00718AAF /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		CE65771920F911610032C6A6 /* ResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTableViewCell.swift; sourceTree = "<group>"; };
 		CED63F3820F90C7200C41AD0 /* Struct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Struct.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -164,6 +166,7 @@
 		CE1F653E20E71FE800718AAF /* Clicker */ = {
 			isa = PBXGroup;
 			children = (
+				CE65771920F911610032C6A6 /* ResultTableViewCell.swift */,
 				CE1AF66C20E7F460003B96B7 /* ResultsTableViewController.swift */,
 				CE1AF66A20E7F44B003B96B7 /* CustomiseTableViewController.swift */,
 				CED63F3820F90C7200C41AD0 /* Struct.swift */,
@@ -382,6 +385,7 @@
 				CE1F659420E72D1B00718AAF /* SoundPlayer.swift in Sources */,
 				CE1F654220E71FE800718AAF /* StartViewController.swift in Sources */,
 				CE1F65AA20E73EAF00718AAF /* GameViewController.swift in Sources */,
+				CE65771A20F911610032C6A6 /* ResultTableViewCell.swift in Sources */,
 				CE1AF66B20E7F44B003B96B7 /* CustomiseTableViewController.swift in Sources */,
 				CE1F659A20E72D1B00718AAF /* SpringView.swift in Sources */,
 				CE1F65A220E72D1B00718AAF /* DesignableTextView.swift in Sources */,
