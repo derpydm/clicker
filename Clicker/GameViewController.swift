@@ -17,6 +17,7 @@ class GameViewController: UIViewController {
     var time = 0.00
     var clicksNeeded: Int = 0
     var timeTaken: Double = 0.00
+    var gameRunning = false
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var clickLabel: UILabel!
     @IBOutlet weak var startLabel: UILabel!
@@ -27,48 +28,53 @@ class GameViewController: UIViewController {
         clickLabel.isHidden = true
         timerLabel.isHidden = true
         startLabel.text = "3"
-        UIView.animate(withDuration: 2, animations: {
+        let animator1 = UIViewPropertyAnimator(duration: 2.0, curve: .easeIn) {
             let transform = CGAffineTransform(scaleX: 0.001, y: 0.001)
             let transform2 = CGAffineTransform(rotationAngle: 90)
             let finalTransform = transform.concatenating(transform2)
             self.startLabel.transform = finalTransform
             self.startLabel.alpha = 0
             self.view.backgroundColor = UIColor(hex: "d1ffd4")
-        }) { (_) in
-            self.startLabel.transform = CGAffineTransform.identity
+        }
+        animator1.startAnimation()
+        animator1.addCompletion { (_) in
             self.startLabel.text = "2"
+            self.startLabel.transform = CGAffineTransform.identity
             self.startLabel.alpha = 1
-            UIView.animate(withDuration: 2, animations: {
+            let animator1 = UIViewPropertyAnimator(duration: 2.0, curve: .easeIn) {
                 let transform = CGAffineTransform(scaleX: 0.001, y: 0.001)
                 let transform2 = CGAffineTransform(rotationAngle: 90)
                 let finalTransform = transform.concatenating(transform2)
                 self.startLabel.transform = finalTransform
                 self.startLabel.alpha = 0
                 self.view.backgroundColor = UIColor(hex: "d1ffeb")
-            }) { (_) in
-                self.startLabel.transform = CGAffineTransform.identity
+            }
+            animator1.startAnimation()
+            animator1.addCompletion { (_) in
                 self.startLabel.text = "1"
+                self.startLabel.transform = CGAffineTransform.identity
                 self.startLabel.alpha = 1
-                UIView.animate(withDuration: 2, animations: {
+                let animator1 = UIViewPropertyAnimator(duration: 2.0, curve: .easeIn) {
                     let transform = CGAffineTransform(scaleX: 0.001, y: 0.001)
                     let transform2 = CGAffineTransform(rotationAngle: 90)
                     let finalTransform = transform.concatenating(transform2)
                     self.startLabel.transform = finalTransform
                     self.startLabel.alpha = 0
                     self.view.backgroundColor = UIColor(hex: "d1fcff")
-                }, completion: { (_) in
-                    self.startLabel.transform = CGAffineTransform.identity
+                }
+                animator1.startAnimation()
+                animator1.addCompletion { (_) in
                     self.startLabel.text = "GO!"
+                    self.startLabel.transform = CGAffineTransform.identity
                     self.startLabel.alpha = 1
-                    UIView.animate(withDuration: 3, animations: {
-                        let transform = CGAffineTransform(scaleX: 0.001, y: 0.001)
+                    let animator1 = UIViewPropertyAnimator(duration: 2.0, curve: .easeIn) {
+                        let transform = CGAffineTransform(scaleX: 5, y: 5)
                         self.startLabel.transform = transform
                         self.startLabel.alpha = 0
                         self.view.backgroundColor = .white
-                    }, completion: { (_) in
-                        self.startLabel.isHidden = true
-                        self.timerLabel.isHidden = false
-                        self.clickLabel.isHidden = false
+                    }
+                    animator1.startAnimation()
+                    animator1.addCompletion({ (_) in
                         if self.mode == "Timed" {
                             self.time = self.counter
                             self.timeTaken = self.time
@@ -77,13 +83,16 @@ class GameViewController: UIViewController {
                             self.clicksNeeded = Int(self.counter)
                             self.speedGame()
                         }
-                    })
-                    
-                    
-                })
+                        self.clickLabel.isHidden = false
+                        self.timerLabel.isHidden = false
+                        self.startLabel.isHidden = true
+                        })
+                    }
+                }
             }
-        }
 
+        // start game
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -91,23 +100,27 @@ class GameViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     @IBAction func screenTapped(_ sender: Any) {
-        if mode == "Speed" {
-            clicks += 1
-            clickLabel.text = String(clicks)
-        } else {
-            clicks += 1
-            clickLabel.text = String(clicks)
+        if gameRunning {
+            if mode == "Speed" {
+                clicks += 1
+                clickLabel.text = String(clicks)
+            } else {
+                clicks += 1
+                clickLabel.text = String(clicks)
+            }
         }
+        
     }
     func timedGame() {
         runTimer()
+        gameRunning = true
         clickLabel.isHidden = false
         timerLabel.isHidden = false
         clickLabel.text = String(clicks)
     }
     func speedGame() {
-        print("starting speed game")
         runTimer()
+        gameRunning = true
         clickLabel.isHidden = false
         timerLabel.isHidden = false
         clickLabel.text = String(clicks)
@@ -115,7 +128,7 @@ class GameViewController: UIViewController {
     func runTimer() {
         timer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { (_) in
             if self.mode == "Timed" {
-                if self.time > 0.01 {
+                if self.time > 0.02 {
                     self.time -= 0.01
                     self.timerLabel.text = String(Float(self.time))
                 } else {
@@ -129,6 +142,7 @@ class GameViewController: UIViewController {
                 } else {
                     self.timer.invalidate()
                     self.resetTimer()
+                    
                 }
             }
         }
@@ -136,24 +150,28 @@ class GameViewController: UIViewController {
     func resetTimer() {
         if mode == "Timed" {
             timerLabel.text = "Done!"
-            UIView.animate(withDuration: 3, animations: {
+            gameRunning = false
+            let animator = UIViewPropertyAnimator(duration: 2.0, curve: .easeInOut, animations: {
                 self.view.backgroundColor = UIColor(hex: "ff6961")
-                let atransformation = CGAffineTransform(scaleX: 2, y: 2)
+                let atransformation = CGAffineTransform(scaleX: 5, y: 5)
                 self.timerLabel.transform = atransformation
-                
-            },
-        completion: { (_) in
-                self.performSegue(withIdentifier: "resultSegue", sender: Any.self)
+            })
+            animator.startAnimation()
+            animator.addCompletion({ (_) in
+                self.performSegue(withIdentifier: "resultSegue", sender: self)
             })
         } else {
             clickLabel.text = String(clicksNeeded)
             timerLabel.text = "Done!"
-            UIView.animate(withDuration: 3, animations: {
-                self.view.backgroundColor = .red
-                let atransformation = CGAffineTransform(scaleX: 2, y: 2)
+            gameRunning = false
+            let animator = UIViewPropertyAnimator(duration: 2.0, curve: .easeInOut, animations: {
+                self.view.backgroundColor = UIColor(hex: "ff6961")
+                let atransformation = CGAffineTransform(scaleX: 5, y: 5)
                 self.timerLabel.transform = atransformation
-            }, completion: { (_) in
-                self.performSegue(withIdentifier: "resultSegue", sender: Any.self)
+            })
+            animator.startAnimation()
+            animator.addCompletion({ (_) in
+                self.performSegue(withIdentifier: "resultSegue", sender: self)
             })
         }
     }
@@ -177,7 +195,7 @@ class GameViewController: UIViewController {
                 let cps = Float(clicks) / Float(time)
                 dest.result = Result(cps: cps, type: sentMode, limit: Float(limit))
             }
-            
+            dest.didComeFromGame = true
         }
     }
 

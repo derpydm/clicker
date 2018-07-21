@@ -9,9 +9,14 @@
 import UIKit
 
 class ResultsTableViewController: UITableViewController {
+    @IBOutlet weak var exitButton: UIBarButtonItem!
     var results: [Result]!
     var result: Result!
+    var didComeFromGame = false
     override func viewDidLoad() {
+        if didComeFromGame {
+            exitButton.title = "Exit"
+        }
         results = Result.loadFromFile()
         if result != nil {
             if results == nil {

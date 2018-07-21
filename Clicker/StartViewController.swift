@@ -10,6 +10,15 @@ import UIKit
 
 class StartViewController: UIViewController {
 
+    @IBOutlet weak var startLabel: UILabel!
+    @IBAction func startButtonPressed(_ sender: Any) {
+        UIView.animate(withDuration: 2, animations: {
+            self.startLabel.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
+        }) { (_) in
+            self.startLabel.transform = CGAffineTransform.identity
+            self.performSegue(withIdentifier: "customiseSegue", sender: Any.self)
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
     }
