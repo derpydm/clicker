@@ -18,7 +18,10 @@ class GameViewController: UIViewController {
     var clicksNeeded: Int = 0
     var timeTaken: Double = 0.00
     var gameRunning = false
+    var animator1: UIViewPropertyAnimator!
+    var transform: CGAffineTransform!
     @IBOutlet weak var timerLabel: UILabel!
+    @IBOutlet var clickGestureRecogniser: UITapGestureRecognizer!
     @IBOutlet weak var clickLabel: UILabel!
     @IBOutlet weak var startLabel: UILabel!
     override func viewDidLoad() {
@@ -67,7 +70,7 @@ class GameViewController: UIViewController {
                     self.startLabel.text = "GO!"
                     self.startLabel.transform = CGAffineTransform.identity
                     self.startLabel.alpha = 1
-                    let animator1 = UIViewPropertyAnimator(duration: 2.0, curve: .easeIn) {
+                    let animator1 = UIViewPropertyAnimator(duration: 1.5, curve: .easeIn) {
                         let transform = CGAffineTransform(scaleX: 5, y: 5)
                         self.startLabel.transform = transform
                         self.startLabel.alpha = 0
@@ -90,9 +93,6 @@ class GameViewController: UIViewController {
                     }
                 }
             }
-
-        // start game
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -108,8 +108,18 @@ class GameViewController: UIViewController {
                 clicks += 1
                 clickLabel.text = String(clicks)
             }
+            let animator = UIViewPropertyAnimator(duration: 0.1, curve: .easeIn, animations: {
+                let transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+                self.clickLabel.transform = transform
+            })
+            animator.startAnimation()
+            animator.addCompletion({ (_) in
+                let animator = UIViewPropertyAnimator(duration: 0.1, curve: .easeIn, animations: {
+                self.clickLabel.transform = CGAffineTransform.identity
+                })
+                animator.startAnimation()
+            })
         }
-        
     }
     func timedGame() {
         runTimer()

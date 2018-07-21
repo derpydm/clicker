@@ -111,6 +111,7 @@
                         </connections>
                     </view>
                     <connections>
+                        <outlet property="clickGestureRecogniser" destination="cRT-z0-ZJU" id="Rgn-MG-hk8"/>
                         <outlet property="clickLabel" destination="UsZ-xP-Idl" id="ng7-oh-6U1"/>
                         <outlet property="startLabel" destination="WZb-Nf-ber" id="P92-E6-WVb"/>
                         <outlet property="timerLabel" destination="bHc-fM-fsU" id="Bh8-pz-Ryi"/>
@@ -276,16 +277,16 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="rKO-jY-Vjz">
-                                            <rect key="frame" x="20" y="5" width="374" height="64.666666666666671"/>
+                                            <rect key="frame" x="30" y="5" width="354" height="64.666666666666671"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CPS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NMB-4N-O35">
-                                                    <rect key="frame" x="0.0" y="22" width="184.66666666666666" height="20.666666666666671"/>
+                                                    <rect key="frame" x="0.0" y="22" width="174.66666666666666" height="20.666666666666671"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H07-9a-lTd">
-                                                    <rect key="frame" x="189.66666666666663" y="22" width="184.33333333333337" height="20.666666666666671"/>
+                                                    <rect key="frame" x="179.66666666666663" y="22" width="174.33333333333337" height="20.666666666666671"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -302,8 +303,8 @@
                                     <constraints>
                                         <constraint firstAttribute="bottom" secondItem="rKO-jY-Vjz" secondAttribute="bottom" constant="5" id="2vv-eu-G1t"/>
                                         <constraint firstItem="rKO-jY-Vjz" firstAttribute="top" secondItem="n6C-sw-RmI" secondAttribute="top" constant="5" id="5cs-kw-fgD"/>
-                                        <constraint firstAttribute="trailing" secondItem="rKO-jY-Vjz" secondAttribute="trailing" constant="20" id="F0n-Oe-a1c"/>
-                                        <constraint firstItem="rKO-jY-Vjz" firstAttribute="leading" secondItem="n6C-sw-RmI" secondAttribute="leading" constant="20" id="tei-ma-tr6"/>
+                                        <constraint firstAttribute="trailing" secondItem="rKO-jY-Vjz" secondAttribute="trailing" constant="30" id="F0n-Oe-a1c"/>
+                                        <constraint firstItem="rKO-jY-Vjz" firstAttribute="leading" secondItem="n6C-sw-RmI" secondAttribute="leading" constant="30" id="tei-ma-tr6"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -378,6 +379,6 @@
         <image name="stopwatch" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="qiP-0h-fsr"/>
+        <segue reference="6Vt-tx-vTG"/>
     </inferredMetricsTieBreakers>
 </document>

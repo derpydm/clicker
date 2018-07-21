@@ -14,6 +14,15 @@ class ResultsTableViewController: UITableViewController {
     var result: Result!
     var didComeFromGame = false
     override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    override func viewWillAppear(_ animated: Bool) {
         if didComeFromGame {
             exitButton.title = "Exit"
         }
@@ -36,15 +45,7 @@ class ResultsTableViewController: UITableViewController {
                 Result.saveToFile(results: results)
             }
         }
-
-        
-        super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        self.navigationItem.rightBarButtonItem = self.editButtonItem
+        tableView.reloadData()
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -67,7 +68,7 @@ class ResultsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "resultCell", for: indexPath) as! ResultTableViewCell
-        cell.cpsLabel.text = String(results[indexPath.row].cps) + " cps"
+        cell.cpsLabel.text = String(format: "%.1f",results[indexPath.row].cps) + " cps"
         cell.modeLabel.text = results[indexPath.row].type + " (" + String(results[indexPath.row].limit) + ")"
         // Configure the cell...
         return cell
