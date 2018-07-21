@@ -12,17 +12,29 @@ class ResultsTableViewController: UITableViewController {
     var results: [Result]!
     var result: Result!
     override func viewDidLoad() {
-        if results == nil {
-            results = []
-        }
         results = Result.loadFromFile()
-        super.viewDidLoad()
         if result != nil {
-            results.append(result)
-            tableView.reloadData()
-            Result.saveToFile(results: results)
+            if results == nil {
+                results = []
+                results.append(result)
+                tableView.reloadData()
+                Result.saveToFile(results: results)
+            } else {
+                results.append(result)
+                tableView.reloadData()
+                Result.saveToFile(results: results)
+            }
+        } else {
+            if results == nil {
+                results = []
+                tableView.reloadData()
+                Result.saveToFile(results: results)
+            }
         }
+
         
+        super.viewDidLoad()
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 

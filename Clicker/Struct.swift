@@ -23,14 +23,12 @@ class Result: Encodable, Decodable {
         let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         return documentsDirectory.appendingPathComponent(plistName).appendingPathExtension("plist")
     }
-    
     static func saveToFile(results: [Result]) {
         let archiveURL = getArchiveURL()
         let propertyListEncoder = PropertyListEncoder()
         let encodedResults = try? propertyListEncoder.encode(results)
         try? encodedResults?.write(to: archiveURL, options: .noFileProtection)
     }
-    
     static func loadFromFile() -> [Result]? {
         let archiveURL = getArchiveURL()
         let propertyListDecoder = PropertyListDecoder()

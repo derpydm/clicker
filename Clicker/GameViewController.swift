@@ -19,16 +19,71 @@ class GameViewController: UIViewController {
     var timeTaken: Double = 0.00
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var clickLabel: UILabel!
+    @IBOutlet weak var startLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        if mode == "Timed" {
-            time = counter
-            timeTaken = time
-            timedGame()
-        } else {
-            clicksNeeded = Int(counter)
-            speedGame()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        clickLabel.isHidden = true
+        timerLabel.isHidden = true
+        startLabel.text = "3"
+        UIView.animate(withDuration: 2, animations: {
+            let transform = CGAffineTransform(scaleX: 0.001, y: 0.001)
+            let transform2 = CGAffineTransform(rotationAngle: 90)
+            let finalTransform = transform.concatenating(transform2)
+            self.startLabel.transform = finalTransform
+            self.startLabel.alpha = 0
+            self.view.backgroundColor = UIColor(hex: "d1ffd4")
+        }) { (_) in
+            self.startLabel.transform = CGAffineTransform.identity
+            self.startLabel.text = "2"
+            self.startLabel.alpha = 1
+            UIView.animate(withDuration: 2, animations: {
+                let transform = CGAffineTransform(scaleX: 0.001, y: 0.001)
+                let transform2 = CGAffineTransform(rotationAngle: 90)
+                let finalTransform = transform.concatenating(transform2)
+                self.startLabel.transform = finalTransform
+                self.startLabel.alpha = 0
+                self.view.backgroundColor = UIColor(hex: "d1ffeb")
+            }) { (_) in
+                self.startLabel.transform = CGAffineTransform.identity
+                self.startLabel.text = "1"
+                self.startLabel.alpha = 1
+                UIView.animate(withDuration: 2, animations: {
+                    let transform = CGAffineTransform(scaleX: 0.001, y: 0.001)
+                    let transform2 = CGAffineTransform(rotationAngle: 90)
+                    let finalTransform = transform.concatenating(transform2)
+                    self.startLabel.transform = finalTransform
+                    self.startLabel.alpha = 0
+                    self.view.backgroundColor = UIColor(hex: "d1fcff")
+                }, completion: { (_) in
+                    self.startLabel.transform = CGAffineTransform.identity
+                    self.startLabel.text = "GO!"
+                    self.startLabel.alpha = 1
+                    UIView.animate(withDuration: 3, animations: {
+                        let transform = CGAffineTransform(scaleX: 0.001, y: 0.001)
+                        self.startLabel.transform = transform
+                        self.startLabel.alpha = 0
+                        self.view.backgroundColor = .white
+                    }, completion: { (_) in
+                        self.startLabel.isHidden = true
+                        self.timerLabel.isHidden = false
+                        self.clickLabel.isHidden = false
+                        if self.mode == "Timed" {
+                            self.time = self.counter
+                            self.timeTaken = self.time
+                            self.timedGame()
+                        } else {
+                            self.clicksNeeded = Int(self.counter)
+                            self.speedGame()
+                        }
+                    })
+                    
+                    
+                })
+            }
         }
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -82,7 +137,7 @@ class GameViewController: UIViewController {
         if mode == "Timed" {
             timerLabel.text = "Done!"
             UIView.animate(withDuration: 3, animations: {
-                self.view.backgroundColor = .red
+                self.view.backgroundColor = UIColor(hex: "ff6961")
                 let atransformation = CGAffineTransform(scaleX: 2, y: 2)
                 self.timerLabel.transform = atransformation
                 
