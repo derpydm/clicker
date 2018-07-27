@@ -146,7 +146,7 @@ class GameViewController: UIViewController {
                     self.resetTimer()
                 }
             } else {
-                if self.clicks <= self.clicksNeeded {
+                if self.clicks < self.clicksNeeded {
                     self.time += 0.01
                     self.timerLabel.text = String(Float(self.time))
                 } else {
