@@ -43,6 +43,7 @@
 		CE1F65A420E72D1B00718AAF /* SpringAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1F658720E72D1B00718AAF /* SpringAnimation.swift */; };
 		CE1F65A520E72D1B00718AAF /* UnwindSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1F658820E72D1B00718AAF /* UnwindSegue.swift */; };
 		CE1F65A620E72D1B00718AAF /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1F658920E72D1B00718AAF /* LoadingView.swift */; };
+		CE1F65A720E72D1B00718AAF /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE1F658A20E72D1B00718AAF /* Info.plist */; };
 		CE1F65A820E72D1B00718AAF /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1F658B20E72D1B00718AAF /* AsyncImageView.swift */; };
 		CE1F65AA20E73EAF00718AAF /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1F65A920E73EAF00718AAF /* GameViewController.swift */; };
 		CE65771A20F911610032C6A6 /* ResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE65771920F911610032C6A6 /* ResultTableViewCell.swift */; };
@@ -78,8 +79,10 @@
 		CE1F654B20E71FE800718AAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE1F655020E71FE800718AAF /* ClickerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClickerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE1F655420E71FE900718AAF /* ClickerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickerTests.swift; sourceTree = "<group>"; };
+		CE1F655620E71FE900718AAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE1F655B20E71FE900718AAF /* ClickerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClickerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE1F655F20E71FE900718AAF /* ClickerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickerUITests.swift; sourceTree = "<group>"; };
+		CE1F656120E71FE900718AAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE1F656E20E72D1B00718AAF /* DesignableImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableImageView.swift; sourceTree = "<group>"; };
 		CE1F656F20E72D1B00718AAF /* KeyboardLayoutConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardLayoutConstraint.swift; sourceTree = "<group>"; };
 		CE1F657020E72D1B00718AAF /* TransitionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionManager.swift; sourceTree = "<group>"; };
@@ -183,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				CE1F655420E71FE900718AAF /* ClickerTests.swift */,
+				CE1F655620E71FE900718AAF /* Info.plist */,
 			);
 			path = ClickerTests;
 			sourceTree = "<group>";
@@ -191,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				CE1F655F20E71FE900718AAF /* ClickerUITests.swift */,
+				CE1F656120E71FE900718AAF /* Info.plist */,
 			);
 			path = ClickerUITests;
 			sourceTree = "<group>";
@@ -342,6 +347,7 @@
 				CE1F654A20E71FE800718AAF /* LaunchScreen.storyboard in Resources */,
 				CE1F65A020E72D1B00718AAF /* LoadingView.xib in Resources */,
 				CE1F654720E71FE800718AAF /* Assets.xcassets in Resources */,
+				CE1F65A720E72D1B00718AAF /* Info.plist in Resources */,
 				CE1F654520E71FE800718AAF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
